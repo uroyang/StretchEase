@@ -457,7 +457,8 @@ function setupActionListeners() {
   elements.btnDetailBack.addEventListener("click", () => switchView("dashboard-view"));
   elements.btnStartRoutine.addEventListener("click", () => startRoutineTimer());
   elements.btnTimerExit.addEventListener("click", () => {
-    if (confirm("현재 운동이 진행 중입니다. 중단하고 나가시겠습니까?")) { stopTimerInterval(); switchView("dashboard-view"); }
+    stopTimerInterval();
+    switchView("dashboard-view");
   });
   elements.btnTimerPrev.addEventListener("click", () => { if (appState.currentExerciseIndex > 0) loadExercise(appState.currentExerciseIndex - 1); });
   elements.btnTimerToggle.addEventListener("click", () => toggleTimerPlayState());
