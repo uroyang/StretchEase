@@ -13,6 +13,9 @@
   
   <link rel="stylesheet" href="style.css">
   
+  <!-- dotLottie 플레이어 (고품질 벡터 애니메이션) -->
+  <script type="module" src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"></script>
+  
   <!-- 모바일 웹앱 등록 정보 (PWA 기초 설정) -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -137,42 +140,17 @@
           <p id="active-ex-desc">곧 스트레칭이 시작됩니다.</p>
         </div>
 
-        <!-- 그래픽 애니메이션 가이드 영역 (Aesthetic SVG Character) -->
+        <!-- Lottie 고품질 운동 가이드 애니메이션 -->
         <div class="character-guide-box">
-          <svg class="avatar-svg" id="avatar-svg" viewBox="0 0 200 240" width="100%" height="100%">
-            <!-- 배경 원형 데코 -->
-            <circle cx="100" cy="120" r="80" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-            
-            <!-- 인체 구조 SVG 레이아웃 -->
-            <g class="avatar-body-group" id="avatar-body-group">
-              <!-- 바닥/매트 라인 -->
-              <line x1="40" y1="210" x2="160" y2="210" stroke="var(--primary-light)" stroke-width="4" stroke-linecap="round" opacity="0.3" class="mat-line" />
-              
-              <!-- 엉덩이/골반 관절 -->
-              <circle cx="100" cy="150" r="7" fill="var(--primary)" class="joint pelvis" />
-              
-              <!-- 척추 / 몸통 -->
-              <path d="M 100 150 L 100 90" stroke="var(--text-light)" stroke-width="8" stroke-linecap="round" class="bone spine" />
-              
-              <!-- 머리 -->
-              <circle cx="100" cy="65" r="16" fill="var(--text-light)" class="joint head" />
-              
-              <!-- 어깨 라인 -->
-              <line x1="85" y1="95" x2="115" y2="95" stroke="var(--text-light)" stroke-width="6" stroke-linecap="round" class="bone shoulders" />
-              
-              <!-- 왼팔 -->
-              <path d="M 85 95 L 70 130 L 60 160" stroke="var(--text-light)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="bone arm-left" />
-              
-              <!-- 오른팔 -->
-              <path d="M 115 95 L 130 130 L 140 160" stroke="var(--text-light)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="bone arm-right" />
-              
-              <!-- 왼다리 -->
-              <path d="M 95 150 L 85 180 L 80 210" stroke="var(--text-light)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="bone leg-left" />
-              
-              <!-- 오른다리 -->
-              <path d="M 105 150 L 115 180 L 120 210" stroke="var(--text-light)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="bone leg-right" />
-            </g>
-          </svg>
+          <dotlottie-player
+            id="lottie-player"
+            src=""
+            background="transparent"
+            speed="1"
+            style="width:100%; height:100%;"
+            loop
+            autoplay>
+          </dotlottie-player>
         </div>
 
         <!-- 서큘러 프로그레스 링 타이머 -->
