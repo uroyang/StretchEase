@@ -1,0 +1,1656 @@
+:root {
+  /* 프리미엄 컬러 팔레트 (딥 포레스트 그린 & 차콜 톤) */
+  --bg-primary: #0a1410;
+  --bg-secondary: #10221a;
+  --bg-card: rgba(22, 46, 36, 0.45);
+  --bg-card-hover: rgba(30, 61, 48, 0.6);
+  --primary: #2ec4b6;
+  --primary-light: #a3f7bf;
+  --primary-dark: #208d83;
+  --text-light: #f4f9f6;
+  --text-muted: #82a396;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --accent-gold: #ffb703;
+  --danger: #e63946;
+  --danger-hover: #c92a37;
+  
+  /* 폰트 및 구조 정의 */
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.06);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* 기본 브라우저 스타일 리셋 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent; /* 모바일 터치 파란 하이라이트 제거 */
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #050b08;
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+/* 앱 모바일 랩퍼 (PC 뷰 대비 및 스마트폰 최적화) */
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  height: 100dvh;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  border: var(--glass-border);
+}
+
+/* 스크롤바 숨기기 */
+.view-content::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* 공통 헤더 스타일 */
+.app-header {
+  height: 64px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 20, 16, 0.8);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: var(--border-color);
+  z-index: 10;
+  transition: transform 0.4s ease;
+}
+
+.app-header.hidden {
+  transform: translateY(-100%);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-emoji {
+  font-size: 24px;
+  filter: drop-shadow(0 2px 5px rgba(46, 196, 182, 0.4));
+}
+
+.logo-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--text-light), var(--primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.streak-badge {
+  background: rgba(255, 183, 3, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(255, 183, 3, 0.3);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.2px;
+  box-shadow: 0 4px 10px rgba(255, 183, 3, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: pulse-gold 2s infinite ease-in-out;
+}
+
+/* 메인 뷰 전환 영역 */
+.view-content {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  padding-bottom: 80px; /* 네비게이션 공간 확보 */
+}
+
+/* 개별 뷰 스타일 */
+.view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.view.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  position: relative;
+  height: auto;
+  min-height: 100%;
+}
+
+/* 웰컴 대시보드 카드 */
+.welcome-card {
+  background: linear-gradient(135deg, rgba(20, 42, 33, 0.9), rgba(10, 26, 20, 0.9));
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.welcome-card h2 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.motivational-quote {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* 요일 트래커 카드 */
+.weekly-tracker-card {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--glass-shadow);
+}
+
+.weekly-tracker-card h3 {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.week-days {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.day-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.day-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.day-dot.completed {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-color: var(--primary);
+  color: var(--bg-primary);
+  box-shadow: 0 0 12px rgba(46, 196, 182, 0.4);
+}
+
+.day-dot.today {
+  border-color: var(--primary-light);
+  color: var(--primary-light);
+  box-shadow: 0 0 6px rgba(163, 247, 191, 0.3);
+}
+
+.day-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.day-dot.completed::after {
+  content: '✓';
+  font-size: 12px;
+}
+
+/* 요약 통계 그리드 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--glass-shadow);
+}
+
+.stat-icon {
+  font-size: 26px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-light);
+}
+
+/* 루틴 카드 목록 */
+.routine-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.routine-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.routine-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.routine-card {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.routine-card:hover, .routine-card:active {
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  border-color: rgba(46, 196, 182, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.routine-card-icon {
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.routine-card:hover .routine-card-icon {
+  transform: scale(1.08);
+}
+
+.routine-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.routine-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.routine-card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.routine-card-meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.meta-item {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-light);
+  background: rgba(46, 196, 182, 0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.routine-card-arrow {
+  color: var(--text-muted);
+  opacity: 0.5;
+  transition: transform 0.3s ease;
+}
+
+.routine-card:hover .routine-card-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* 2. 루틴 상세 정보 화면 */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.btn-back {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-light);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-back:active {
+  transform: scale(0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#detail-header-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.detail-hero {
+  background: linear-gradient(185deg, var(--bg-secondary), var(--bg-primary));
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hero-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-icon {
+  font-size: 40px;
+  background: rgba(255,255,255,0.03);
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--glass-border);
+}
+
+.hero-title-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.hero-desc {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.exercise-list-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.detail-exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ex-detail-item {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ex-number {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary);
+  background: rgba(46, 196, 182, 0.1);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ex-text-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ex-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.ex-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.ex-dur {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-light);
+  background: rgba(163, 247, 191, 0.08);
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.detail-footer {
+  margin-top: 15px;
+  padding-bottom: 20px;
+}
+
+.btn-primary-large {
+  width: 100%;
+  height: 56px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none;
+  color: var(--bg-primary);
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(46, 196, 182, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-large:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 12px rgba(46, 196, 182, 0.2);
+}
+
+/* 3. 타이머 운동 진행 뷰 */
+#timer-view {
+  padding: 16px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at center top, var(--bg-secondary) 0%, var(--bg-primary) 80%);
+}
+
+.timer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+}
+
+.btn-exit {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-light);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.timer-progress-text {
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.5px;
+  background: rgba(255,255,255,0.04);
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.timer-sound-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.btn-icon.muted {
+  opacity: 0.4;
+  background: rgba(230, 57, 70, 0.08);
+  border-color: rgba(230, 57, 70, 0.15);
+}
+
+.active-exercise-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 10px;
+}
+
+#active-ex-name {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text-light);
+  letter-spacing: -0.5px;
+}
+
+#active-ex-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  height: 42px; /* 최대 두줄 높이 확보 */
+  overflow: hidden;
+}
+
+/* 캐릭터 박스 & 뼈대 기본 스타일 */
+.character-guide-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.avatar-svg {
+  max-width: 180px;
+}
+
+/* 인형 관절별 기준점(Transform Origin) 설정 */
+.joint.pelvis {
+  transform-origin: 100px 150px;
+}
+.bone.spine {
+  transform-origin: 100px 150px;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.joint.head {
+  transform-origin: 100px 90px;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.bone.shoulders {
+  transform-origin: 100px 95px;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.bone.arm-left {
+  transform-origin: 85px 95px;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.bone.arm-right {
+  transform-origin: 115px 95px;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.bone.leg-left {
+  transform-origin: 95px 150px;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.bone.leg-right {
+  transform-origin: 105px 150px;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* =================================*********
+   각 자세별 애니메이션 / 회전 각도 정의
+   ================================********* */
+
+/* 1. 기지개 켜기 (anim-full-stretch) */
+.anim-full-stretch .arm-left {
+  transform: rotate(-140deg);
+}
+.anim-full-stretch .arm-right {
+  transform: rotate(140deg);
+}
+.anim-full-stretch .spine {
+  transform: scaleY(1.05) translateY(-3px);
+}
+.anim-full-stretch .head {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* 2. 목 좌우 늘리기 (anim-neck-stretch) */
+.anim-neck-stretch .head {
+  animation: neck-stretch-loop 5s infinite ease-in-out;
+}
+.anim-neck-stretch .arm-left {
+  transform: rotate(-20deg);
+}
+.anim-neck-stretch .arm-right {
+  transform: rotate(20deg);
+}
+
+@keyframes neck-stretch-loop {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-25deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(25deg); }
+}
+
+/* 3. 옆구리 늘리기 (anim-side-stretch) */
+.anim-side-stretch {
+  animation: side-stretch-loop 6s infinite ease-in-out;
+}
+@keyframes side-stretch-loop {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+.anim-side-stretch .arm-left {
+  transform: rotate(-150deg);
+}
+.anim-side-stretch .arm-right {
+  transform: rotate(150deg);
+}
+
+/* 4. 어깨 롤링 (anim-shoulder-roll) */
+.anim-shoulder-roll .shoulders {
+  animation: shoulder-roll-loop 3s infinite linear;
+}
+.anim-shoulder-roll .arm-left {
+  transform: rotate(-15deg);
+}
+.anim-shoulder-roll .arm-right {
+  transform: rotate(15deg);
+}
+@keyframes shoulder-roll-loop {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(1deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(3px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* 5. 상체 숙이기 (anim-forward-fold) */
+.anim-forward-fold .spine {
+  transform: rotate(75deg);
+}
+.anim-forward-fold .head {
+  transform: translate(-30px, 30px) rotate(45deg);
+}
+.anim-forward-fold .arm-left {
+  transform: rotate(-80deg) translate(-10px, 10px);
+}
+.anim-forward-fold .arm-right {
+  transform: rotate(-70deg) translate(-10px, 10px);
+}
+
+/* 6. 턱 당기기 (anim-chin-tuck) */
+.anim-chin-tuck .head {
+  animation: chin-tuck-loop 3s infinite ease-in-out;
+}
+@keyframes chin-tuck-loop {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-6px) translateY(2px); }
+}
+
+/* 7. 가슴 열기 (anim-chest-opener) */
+.anim-chest-opener .arm-left {
+  transform: rotate(-80deg) translateX(-10px);
+}
+.anim-chest-opener .arm-right {
+  transform: rotate(80deg) translateX(10px);
+}
+.anim-chest-opener .spine {
+  transform: rotate(-5deg);
+}
+
+/* 8. W 스트레칭 (anim-w-stretch) */
+.anim-w-stretch .arm-left {
+  transform: rotate(-55deg) translate(-5px, 5px);
+}
+.anim-w-stretch .arm-right {
+  transform: rotate(55deg) translate(5px, 5px);
+}
+.anim-w-stretch .spine {
+  transform: scaleY(0.98);
+}
+
+/* 9. 뒷목 늘리기 (anim-neck-down) */
+.anim-neck-down .head {
+  transform: rotate(35deg) translateY(4px);
+}
+.anim-neck-down .arm-left {
+  transform: rotate(-100deg) translate(-15px, -15px);
+}
+.anim-neck-down .arm-right {
+  transform: rotate(100deg) translate(15px, -15px);
+}
+
+/* 10. 어깨 뒤로 당기기 (anim-shoulder-back) */
+.anim-shoulder-back .arm-left {
+  transform: rotate(45deg) translate(10px, 15px);
+}
+.anim-shoulder-back .arm-right {
+  transform: rotate(-45deg) translate(-10px, 15px);
+}
+.anim-shoulder-back .spine {
+  transform: rotate(-8deg);
+}
+
+/* 11. 고양이 자세 (anim-cat-cow) */
+.anim-cat-cow .avatar-body-group {
+  /* 매트 위에 엎드린 형상 연출을 위해 전신 그룹을 회전/축소 */
+  transform: rotate(-80deg) translate(-60px, -40px) scale(0.9);
+  transform-origin: 100px 120px;
+}
+.anim-cat-cow .spine {
+  animation: cat-cow-spine-loop 6s infinite ease-in-out;
+}
+@keyframes cat-cow-spine-loop {
+  0%, 100% { transform: scaleX(0.9) rotate(5deg); }
+  50% { transform: scaleX(1.1) rotate(-8deg); }
+}
+
+/* 12. 아기 자세 (anim-child-pose) */
+.anim-child-pose .avatar-body-group {
+  transform: rotate(-90deg) translate(-90px, -20px) scale(0.85);
+  transform-origin: 100px 120px;
+}
+.anim-child-pose .spine {
+  transform: rotate(30deg);
+}
+.anim-child-pose .arm-left, .anim-child-pose .arm-right {
+  transform: rotate(-160deg);
+}
+.anim-child-pose .leg-left, .anim-child-pose .leg-right {
+  transform: rotate(-110deg);
+}
+
+/* 13. 누워서 무릎 당기기 (anim-knee-to-chest) */
+.anim-knee-to-chest .avatar-body-group {
+  transform: rotate(90deg) translate(40px, -30px);
+  transform-origin: 100px 120px;
+}
+.anim-knee-to-chest .leg-left, .anim-knee-to-chest .leg-right {
+  transform: rotate(-95deg) scaleY(0.7);
+}
+.anim-knee-to-chest .arm-left, .anim-knee-to-chest .arm-right {
+  transform: rotate(-80deg);
+}
+
+/* 14. 코브라 자세 (anim-cobra) */
+.anim-cobra .avatar-body-group {
+  transform: rotate(-90deg) translate(-50px, -20px) scale(0.9);
+  transform-origin: 100px 120px;
+}
+.anim-cobra .spine {
+  transform: rotate(-35deg);
+}
+.anim-cobra .head {
+  transform: rotate(-15deg);
+}
+.anim-cobra .arm-left, .anim-cobra .arm-right {
+  transform: rotate(-40deg);
+}
+
+/* 15. 이상근 스트레칭 (anim-hip-stretch) */
+.anim-hip-stretch .avatar-body-group {
+  transform: rotate(90deg) translate(40px, -30px);
+  transform-origin: 100px 120px;
+}
+.anim-hip-stretch .leg-left {
+  transform: rotate(-85deg) scaleY(0.8);
+}
+.anim-hip-stretch .leg-right {
+  transform: rotate(-45deg) skewX(20deg);
+}
+
+/* 16. 호흡하기 (anim-deep-breathing) */
+.anim-deep-breathing .spine {
+  animation: breathing-spine 4s infinite ease-in-out;
+}
+.anim-deep-breathing .arm-left {
+  transform: rotate(-25deg);
+}
+.anim-deep-breathing .arm-right {
+  transform: rotate(25deg);
+}
+@keyframes breathing-spine {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04) translateY(-2px); }
+}
+
+/* 17. 척추 비틀기 (anim-seated-twist) */
+.anim-seated-twist .shoulders {
+  animation: twist-loop 6s infinite ease-in-out;
+}
+.anim-seated-twist .arm-left {
+  transform: rotate(-60deg);
+}
+.anim-seated-twist .arm-right {
+  transform: rotate(30deg);
+}
+@keyframes twist-loop {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(20deg); }
+}
+
+/* 18. 나비 자세 (anim-butterfly) */
+.anim-butterfly .leg-left {
+  animation: butterfly-left-wing 2.5s infinite ease-in-out;
+}
+.anim-butterfly .leg-right {
+  animation: butterfly-right-wing 2.5s infinite ease-in-out;
+}
+.anim-butterfly .spine {
+  transform: rotate(15deg);
+}
+@keyframes butterfly-left-wing {
+  0%, 100% { transform: rotate(-40deg); }
+  50% { transform: rotate(-10deg); }
+}
+@keyframes butterfly-right-wing {
+  0%, 100% { transform: rotate(40deg); }
+  50% { transform: rotate(10deg); }
+}
+
+/* 19. 다리 벽 올리기 (anim-legs-up) */
+.anim-legs-up .avatar-body-group {
+  transform: rotate(90deg) translate(30px, -20px);
+  transform-origin: 100px 120px;
+}
+.anim-legs-up .leg-left, .anim-legs-up .leg-right {
+  transform: rotate(-90deg);
+}
+.anim-legs-up .arm-left, .anim-legs-up .arm-right {
+  transform: rotate(-20deg);
+}
+
+/* 20. 사바사나 (anim-savasana) */
+.anim-savasana .avatar-body-group {
+  transform: rotate(90deg) translate(30px, -20px);
+  transform-origin: 100px 120px;
+}
+.anim-savasana .arm-left {
+  transform: rotate(-15deg);
+}
+.anim-savasana .arm-right {
+  transform: rotate(15deg);
+}
+.anim-savasana .spine {
+  animation: breathing-spine 5s infinite ease-in-out;
+}
+
+/* 타이머 카운트다운 영역 */
+.timer-display-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress-ring-bar {
+  stroke-dasharray: 440;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.1s linear;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px rgba(46, 196, 182, 0.4));
+}
+
+.timer-number-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#timer-countdown {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+#timer-unit {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* 타이머 제어부 */
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 10px;
+}
+
+.btn-control-main {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none;
+  color: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(46, 196, 182, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-control-main:active {
+  transform: scale(0.92);
+  box-shadow: 0 4px 10px rgba(46, 196, 182, 0.2);
+}
+
+.btn-control-secondary {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-control-secondary:active {
+  transform: scale(0.9);
+  background: rgba(255,255,255,0.1);
+}
+
+/* 4. 기록 뷰 스타일 */
+.view-header-static {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.view-header-static h2 {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.view-header-static p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.stats-summary-card {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: var(--glass-shadow);
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.summary-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary-light);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.summary-lbl {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.summary-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.06);
+}
+
+.history-list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.history-list-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.no-history {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255,255,255,0.01);
+  border: 1px dashed rgba(255,255,255,0.05);
+  border-radius: 16px;
+}
+
+.history-item {
+  background: rgba(255,255,255,0.02);
+  border: var(--glass-border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.history-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.history-date {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.history-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.history-dur {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary-light);
+}
+
+.history-xp {
+  font-size: 10px;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+/* 5. 설정 화면 스타일 */
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-group h3 {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding-left: 4px;
+}
+
+.setting-item {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  box-shadow: var(--glass-shadow);
+}
+
+.setting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.setting-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.setting-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.setting-select {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: rgba(230, 57, 70, 0.1);
+  border: 1px solid rgba(230, 57, 70, 0.2);
+  color: var(--danger);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:active {
+  background: var(--danger);
+  color: var(--text-light);
+  transform: scale(0.95);
+}
+
+.app-info-footer {
+  text-align: center;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* 스위치 토글 디자인 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,0.08);
+  transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--text-muted);
+  transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+input:checked + .slider {
+  background-color: rgba(46, 196, 182, 0.2);
+  border-color: var(--primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+  background-color: var(--primary);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* 하단 고정 네비게이션 바 */
+.bottom-nav {
+  height: calc(64px + var(--safe-area-bottom));
+  padding-bottom: var(--safe-area-bottom);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  background: rgba(10, 20, 16, 0.85);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: var(--border-color);
+  z-index: 10;
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.3);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bottom-nav.hidden {
+  transform: translateY(100%);
+}
+
+.nav-item {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-icon {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.nav-item.active {
+  color: var(--primary);
+}
+
+.nav-item.active .nav-icon {
+  transform: scale(1.15) translateY(-2px);
+  filter: drop-shadow(0 0 4px rgba(46, 196, 182, 0.4));
+}
+
+.nav-item.active .nav-label {
+  font-weight: 700;
+}
+
+/* 골드 보상 펄스 애니메이션 */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 4px 10px rgba(255, 183, 3, 0.1); }
+  50% { box-shadow: 0 4px 16px rgba(255, 183, 3, 0.3); }
+}
+
+/* =================================*********
+   카테고리 필터 스위치 (알약 슬라이더) 스타일
+   ========================================= */
+.category-filter-container {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0 15px 0;
+}
+
+.category-filter-pill {
+  display: flex;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px;
+  border-radius: 24px;
+  position: relative;
+  width: 100%;
+  height: 48px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.filter-slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: linear-gradient(135deg, rgba(46, 196, 182, 0.18), rgba(32, 141, 131, 0.28));
+  border: 1px solid rgba(46, 196, 182, 0.35);
+  border-radius: 20px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(46, 196, 182, 0.15);
+}
+
+/* 홈트레이닝 탭 활성화 시 슬라이더 우측 이동 */
+.category-filter-pill.active-workout .filter-slider {
+  transform: translateX(100%);
+}
+
+.filter-btn {
+  flex: 1;
+  z-index: 2;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+.filter-btn.active {
+  color: var(--primary-light);
+}
+
+/* =================================*********
+   신규 근력 운동(홈트) 관절 애니메이션 정의
+   ========================================= */
+
+/* A. 점핑잭 (Jumping Jacks) */
+.anim-jumping-jacks .arm-left {
+  animation: jumping-jack-arm-l 1.2s infinite ease-in-out;
+}
+.anim-jumping-jacks .arm-right {
+  animation: jumping-jack-arm-r 1.2s infinite ease-in-out;
+}
+.anim-jumping-jacks .leg-left {
+  animation: jumping-jack-leg-l 1.2s infinite ease-in-out;
+}
+.anim-jumping-jacks .leg-right {
+  animation: jumping-jack-leg-r 1.2s infinite ease-in-out;
+}
+.anim-jumping-jacks .spine {
+  animation: jumping-jack-spine 1.2s infinite ease-in-out;
+}
+
+@keyframes jumping-jack-arm-l {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(-145deg); }
+}
+@keyframes jumping-jack-arm-r {
+  0%, 100% { transform: rotate(25deg); }
+  50% { transform: rotate(145deg); }
+}
+@keyframes jumping-jack-leg-l {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(-25deg); }
+}
+@keyframes jumping-jack-leg-r {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(25deg); }
+}
+@keyframes jumping-jack-spine {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px) scaleY(1.03); }
+}
+
+/* B. 스쿼트 (Squats) */
+.anim-squats .leg-left {
+  animation: squat-leg-l 2.5s infinite ease-in-out;
+}
+.anim-squats .leg-right {
+  animation: squat-leg-r 2.5s infinite ease-in-out;
+}
+.anim-squats .spine {
+  animation: squat-spine 2.5s infinite ease-in-out;
+}
+.anim-squats .head {
+  animation: squat-head 2.5s infinite ease-in-out;
+}
+.anim-squats .arm-left {
+  transform: rotate(-90deg); /* 양손을 앞으로 뻗음 */
+}
+.anim-squats .arm-right {
+  transform: rotate(90deg);
+}
+
+@keyframes squat-leg-l {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  50% { transform: rotate(-45deg) scaleY(0.72); }
+}
+@keyframes squat-leg-r {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  50% { transform: rotate(45deg) scaleY(0.72); }
+}
+@keyframes squat-spine {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(22px) rotate(6deg); }
+}
+@keyframes squat-head {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(22px) rotate(-4deg); }
+}
+
+/* C. 푸쉬업 (Pushups) */
+.anim-pushups .avatar-body-group {
+  transform: rotate(-80deg) translate(-50px, -20px) scale(0.9);
+  transform-origin: 100px 120px;
+}
+.anim-pushups .arm-left {
+  animation: pushup-arm-l 2.5s infinite ease-in-out;
+}
+.anim-pushups .arm-right {
+  animation: pushup-arm-r 2.5s infinite ease-in-out;
+}
+.anim-pushups .spine {
+  animation: pushup-spine 2.5s infinite ease-in-out;
+}
+.anim-pushups .head {
+  animation: pushup-head 2.5s infinite ease-in-out;
+}
+
+@keyframes pushup-arm-l {
+  0%, 100% { transform: rotate(-40deg); }
+  50% { transform: rotate(-100deg) translate(-8px, -4px); }
+}
+@keyframes pushup-arm-r {
+  0%, 100% { transform: rotate(-40deg); }
+  50% { transform: rotate(-100deg) translate(8px, -4px); }
+}
+@keyframes pushup-spine {
+  0%, 100% { transform: translateY(0) rotate(-10deg); }
+  50% { transform: translateY(10px) rotate(-4deg); }
+}
+@keyframes pushup-head {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* D. 플랭크 (Plank) */
+.anim-plank .avatar-body-group {
+  transform: rotate(-85deg) translate(-70px, -20px) scale(0.95);
+  transform-origin: 100px 120px;
+}
+.anim-plank .arm-left {
+  transform: rotate(-95deg) translate(-10px, -5px);
+}
+.anim-plank .arm-right {
+  transform: rotate(95deg) translate(10px, -5px);
+}
+.anim-plank .spine {
+  transform: rotate(0deg);
+}
+.anim-plank .head {
+  transform: rotate(5deg);
+}
+
+/* E. 크런치 (Crunches) */
+.anim-crunches .avatar-body-group {
+  transform: rotate(90deg) translate(40px, -30px);
+  transform-origin: 100px 120px;
+}
+.anim-crunches .leg-left, .anim-crunches .leg-right {
+  transform: rotate(-75deg) scaleY(0.8);
+}
+.anim-crunches .arm-left {
+  transform: rotate(-60deg);
+}
+.anim-crunches .arm-right {
+  transform: rotate(60deg);
+}
+.anim-crunches .spine {
+  animation: crunch-spine 2.5s infinite ease-in-out;
+}
+.anim-crunches .head {
+  animation: crunch-head 2.5s infinite ease-in-out;
+}
+
+@keyframes crunch-spine {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-25deg); }
+}
+@keyframes crunch-head {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg) translate(-4px, 4px); }
+}
