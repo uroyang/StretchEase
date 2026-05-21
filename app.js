@@ -330,10 +330,34 @@ function loadExercise(index) {
   elements.totalExCount.innerText = routine.exercises.length;
   elements.activeExName.innerText = ex.name;
   elements.activeExDesc.innerText = ex.description;
+
+  // 자세 가이드 카드 업데이트
+  updateGuideCard(ex);
   
   const prepTime = parseInt(appState.settings.prepTime, 10);
   if (prepTime > 0) runPrepPhase(prepTime, ex);
   else runExercisePhase(ex);
+}
+
+// --- 자세 가이드 카드 업데이트 함수 ---
+function updateGuideCard(ex) {
+  const guideIcon = document.getElementById("guide-icon");
+  const tipsList = document.getElementById("guide-tips-list");
+  const musclesEl = document.getElementById("guide-muscles");
+  if (!guideIcon || !tipsList || !musclesEl) return;
+
+  // 아이콘 업데이트
+  guideIcon.textContent = ex.icon || "💪";
+
+  // 자세 포인트 리스트 업데이트 (순차적 애니메이션을 위해 클래스 토글)
+  tipsList.innerHTML = (ex.tips || ["올바른 자세를 유지하세요.", "무리하지 마세요.", "호흡을 편안하게 유지하세요."])
+    .map((tip, i) => `<li class="guide-tip-item" style="animation-delay:${i * 0.1}s"><span class="tip-check">✓</span><span>${tip}</span></li>`)
+    .join("");
+
+  // 근육 타깃 태그 업데이트
+  musclesEl.innerHTML = (ex.muscles || [])
+    .map(m => `<span class="muscle-tag">${m}</span>`)
+    .join("");
 }
 
 function stopTimerInterval() {

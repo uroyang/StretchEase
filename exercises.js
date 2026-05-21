@@ -21,35 +21,50 @@ const stretchingRoutines = [
         duration: 30,
         description: "양손을 깍지 끼고 머리 위로 쭉 뻗으며 발끝까지 전신을 늘려줍니다.",
         tts: "첫 번째 동작은 전신 기지개 켜기입니다. 양손을 깍지 끼고 머리 위로 쭉 뻗으며 기지개를 켜세요. 발끝도 아래로 쭉 뻗어 줍니다. 숨을 편안히 들이마시고 내쉬세요.",
-        animationClass: "anim-full-stretch"
+        animationClass: "anim-full-stretch",
+        icon: "🙆",
+        tips: ["양손 깍지 끼고 머리 위로 쭉 뻗기", "발끝까지 전신을 길게 늘리기", "숨 들이마시며 뻗고, 내쉬며 이완"],
+        muscles: ["전신", "척추"]
       },
       {
         name: "목 좌우 늘리기",
         duration: 30,
         description: "오른손으로 왼쪽 머리를 잡고 오른쪽으로 지긋이 당깁니다. 반대쪽도 동일하게 진행합니다.",
         tts: "목 좌우 늘리기입니다. 먼저 오른손으로 머리 왼쪽을 감싸고 오른쪽으로 지긋이 당겨 어깨와 목 옆선을 늘려줍니다. 반대쪽도 똑같이 진행하며 목 주변의 긴장을 풀어줍니다.",
-        animationClass: "anim-neck-stretch"
+        animationClass: "anim-neck-stretch",
+        icon: "🤸",
+        tips: ["한 손으로 머리 옆을 감싸 지긋이 당기기", "어깨가 따라 올라가지 않게 내리기", "좌우 각 15초씩 부드럽게 진행"],
+        muscles: ["목", "승모근"]
       },
       {
         name: "옆구리 늘리기",
         duration: 30,
         description: "오른팔을 하늘로 뻗은 뒤 몸통을 왼쪽으로 기울여 옆구리를 늘립니다. 반대쪽도 진행합니다.",
         tts: "옆구리 늘리기입니다. 한쪽 팔을 위로 높이 뻗고 몸통을 옆으로 기울여 갈비뼈 사이사이를 늘려주세요. 반대쪽도 부드럽게 들이쉬는 숨에 세우고 내쉬는 숨에 기울입니다.",
-        animationClass: "anim-side-stretch"
+        animationClass: "anim-side-stretch",
+        icon: "🏃",
+        tips: ["팔을 귀 옆으로 최대한 길게 뻗기", "골반이 옆으로 틀어지지 않게 고정", "내쉬는 숨에 더 깊이 기울이기"],
+        muscles: ["옆구리", "광배근"]
       },
       {
         name: "어깨 천천히 돌리기",
         duration: 30,
         description: "어깨 끝에 손을 대거나 편하게 내린 상태에서 앞에서 뒤로 큰 원을 그리며 돌려줍니다.",
         tts: "어깨 천천히 돌리기입니다. 양어깨를 귀 가까이 올렸다가 뒤로 넘기면서 아래로 툭 떨어뜨립니다. 등 뒤의 날개뼈가 서로 가까워지는 것을 느껴보세요.",
-        animationClass: "anim-shoulder-roll"
+        animationClass: "anim-shoulder-roll",
+        icon: "💫",
+        tips: ["어깨를 귀 쪽으로 올리며 크게 원 그리기", "뒤로 돌릴 때 날개뼈를 꽉 조이기", "앞뒤로 각 5회씩 천천히 반복"],
+        muscles: ["어깨", "승모근"]
       },
       {
         name: "서서 상체 숙이기",
         duration: 30,
         description: "무릎을 살짝 굽히고 상체를 아래로 늘어뜨려 척추와 다리 뒷면을 이완합니다.",
         tts: "마지막 동작은 서서 상체 숙이기입니다. 무릎을 살짝 굽혀도 좋습니다. 상체의 힘을 완전히 빼고 바닥으로 툭 떨어뜨리세요. 등과 허리가 시원해집니다.",
-        animationClass: "anim-forward-fold"
+        animationClass: "anim-forward-fold",
+        icon: "🙇",
+        tips: ["무릎 살짝 구부리고 상체 힘 완전히 빼기", "목과 머리도 완전히 아래로 늘어뜨리기", "햄스트링이 당기는 느낌 30초 유지"],
+        muscles: ["허리", "햄스트링", "척추"]
       }
     ]
   },
@@ -68,36 +83,50 @@ const stretchingRoutines = [
         duration: 30,
         description: "검지 손가락으로 턱을 뒤로 꾹 누르며 뒤통수를 뒤로 밀어줍니다. (투턱 만들기)",
         tts: "턱 당기기입니다. 손가락으로 턱을 몸 쪽으로 밀어 넣는 느낌으로 지긋이 눌러줍니다. 정수리가 하늘로 길어지며 목 뒷근육이 늘어나는 것을 느껴보세요.",
-        animationClass: "anim-chin-tuck"
+        animationClass: "anim-chin-tuck",
+        icon: "🧍",
+        tips: ["손가락으로 턱을 뒤로 꾹 밀어 넣기", "정수리가 하늘로 솟는 느낌 유지", "턱이 90도로 내려가게 유지하기"],
+        muscles: ["목", "경추"]
       },
       {
         name: "가슴 활짝 열기",
         duration: 30,
         description: "양팔을 옆으로 벌려 가슴을 앞 쪽으로 펴고 날개뼈를 뒤에서 맞닿게 모아줍니다.",
         tts: "가슴 활짝 열기입니다. 양손을 머리 뒤에 대거나 양옆으로 벌려 가슴을 앞 방향으로 시원하게 펴줍니다. 굽어 있던 가슴 앞쪽 근육이 이완됩니다.",
-        animationClass: "anim-chest-opener"
+        animationClass: "anim-chest-opener",
+        icon: "🙌",
+        tips: ["양팔을 옆으로 넓게 펼치기", "가슴을 앞으로 내밀며 날개뼈 조이기", "숨 들이마시며 가슴을 최대한 부풀리기"],
+        muscles: ["가슴", "어깨", "등"]
       },
       {
         name: "W 자 어깨 스트레칭",
         duration: 30,
         description: "양팔을 위로 뻗었다가 등 근육의 자극을 느끼며 팔꿈치를 아래로 내려 W 모양을 만듭니다.",
         tts: "더블유 자 어깨 스트레칭입니다. 양손을 하늘로 올렸다가, 등 뒤 날개뼈를 꽉 조이면서 팔꿈치를 옆구리 쪽으로 내립니다. 팔 모양이 더블유 자가 되도록 하세요.",
-        animationClass: "anim-w-stretch"
+        animationClass: "anim-w-stretch",
+        icon: "✌️",
+        tips: ["양손을 하늘로 올렸다가 팔꿈치 내리기", "W 모양 만들 때 날개뼈 꽉 조이기", "천천히 10회 반복하기"],
+        muscles: ["어깨", "등", "승모근"]
       },
       {
         name: "머리 지긋이 눌러 뒷목 늘리기",
         duration: 30,
         description: "두 손으로 뒤통수를 감싸고 턱이 가슴에 닿는 느낌으로 머리를 아래로 지긋이 눌러줍니다.",
         tts: "뒷목 늘리기입니다. 뒤통수에서 손깍지를 끼고, 턱을 가슴 쪽으로 끌어당기며 머리를 아래로 지긋이 누릅니다. 손의 무게감만 이용해서 부드럽게 눌러주세요.",
-        animationClass: "anim-neck-down"
+        animationClass: "anim-neck-down",
+        icon: "🙏",
+        tips: ["손깍지 끼고 뒤통수 감싸기", "턱을 가슴으로 당기며 지긋이 누르기", "손의 무게만 이용해 부드럽게 진행"],
+        muscles: ["뒷목", "경추"]
       },
       {
         name: "등 뒤로 손 깍지 껴서 올리기",
         duration: 30,
         description: "등 뒤에서 양손을 깍지 끼고 가슴을 펴며 깍지 낀 손을 몸 뒤로 멀리 보냅니다.",
         tts: "마지막 동작은 등 뒤 깍지 끼고 올리기입니다. 등 뒤에서 손깍지를 끼고, 손을 아래와 뒤로 뻗으며 가슴을 활짝 엽니다. 어깨 앞쪽이 매우 시원해집니다.",
-        animationClass: "anim-shoulder-back"
-      }
+        animationClass: "anim-shoulder-back",
+        icon: "🤲",
+        tips: ["등 뒤에서 손깍지 끼기", "가슴을 앞으로 내밀며 손을 뒤로 멀리 뻗기", "어깨 앞쪽이 시원한 느낌 유지"],
+        muscles: ["가슴", "어깨", "이두근"]
     ]
   },
   {
@@ -115,36 +144,50 @@ const stretchingRoutines = [
         duration: 30,
         description: "네발기기 자세에서 숨을 내쉬며 등을 둥글게 말고, 들이쉬며 허리를 아래로 낮춥니다.",
         tts: "고양이 자세입니다. 엎드린 자세에서 숨을 내쉬며 등을 하늘 쪽으로 동그랗게 맙니다. 시선은 배꼽을 보세요. 다시 숨을 들이마시며 가슴을 들어 올려 허리를 아래로 내립니다.",
-        animationClass: "anim-cat-cow"
+        animationClass: "anim-cat-cow",
+        icon: "🐱",
+        tips: ["네 발 자세에서 내쉬며 등을 둥글게 말기", "들이쉬며 가슴 들어 허리를 아래로 내리기", "숨의 흐름에 맞춰 천천히 반복하기"],
+        muscles: ["척추", "허리", "복부"]
       },
       {
         name: "척추를 이완하는 아기 자세",
         duration: 30,
         description: "무릎을 꿇고 앉아 엉덩이를 발뒤꿈치에 붙인 뒤 양팔을 앞으로 뻗으며 이마를 바닥에 댑니다.",
         tts: "아기 자세입니다. 엉덩이를 뒤꿈치에 붙이고 앉아 상체를 허벅지 위로 엎드립니다. 두 손은 앞으로 길게 뻗고 이마를 바닥에 대어 허리 전체의 긴장을 풀어줍니다.",
-        animationClass: "anim-child-pose"
+        animationClass: "anim-child-pose",
+        icon: "🧘",
+        tips: ["엉덩이를 발뒤꿈치에 최대한 붙이기", "양팔을 앞으로 최대한 길게 뻗기", "이마를 바닥에 대고 허리 힘 완전히 빼기"],
+        muscles: ["허리", "척추", "어깨"]
       },
       {
         name: "누워서 무릎 가슴으로 당기기",
         duration: 30,
         description: "바닥에 누워 양손으로 무릎을 감싸 쥐고 가슴 쪽으로 지긋이 당겨줍니다.",
         tts: "누워서 무릎 당기기입니다. 편안하게 등을 대고 누워 무릎을 가슴 가까이 당겨 안아줍니다. 허리 아래쪽 꼬리뼈 부위가 시원하게 이완되는 것을 느낍니다.",
-        animationClass: "anim-knee-to-chest"
+        animationClass: "anim-knee-to-chest",
+        icon: "🤗",
+        tips: ["등을 바닥에 평평하게 대고 눕기", "양 무릎을 두 손으로 감싸 안기", "꼬리뼈가 들리는 느낌으로 지긋이 당기기"],
+        muscles: ["허리", "골반", "둔근"]
       },
       {
         name: "엎드려 상체 세우는 코브라 자세",
         duration: 30,
         description: "엎드린 상태에서 양손으로 바닥을 밀며 상체를 세워 척추 앞면을 늘려줍니다.",
         tts: "코브라 자세입니다. 배를 바닥에 대고 엎드려 손으로 바닥을 밀며 가슴과 상체를 부드럽게 들어 올립니다. 허리에 과한 통증이 없는 선까지만 올라오세요.",
-        animationClass: "anim-cobra"
+        animationClass: "anim-cobra",
+        icon: "🐍",
+        tips: ["배를 바닥에 대고 엎드리기", "팔꿈치를 살짝 구부린 채 천천히 상체 들기", "통증 없는 선까지만 올라오기"],
+        muscles: ["척추", "복부", "허리"]
       },
       {
         name: "골반 주변 이상근 스트레칭",
         duration: 30,
         description: "누워서 오른쪽 발목을 왼쪽 무릎 위에 얹고(숫자 4 모양), 왼쪽 허벅지를 몸 쪽으로 당깁니다.",
         tts: "마지막 동작은 이상근 스트레칭입니다. 누워서 한쪽 다리를 접어 반대쪽 무릎 위에 얹어 숫자 사자 모양을 만듭니다. 세워진 다리 허벅지 뒤를 잡고 몸 쪽으로 지긋이 당겨 골반을 풉니다.",
-        animationClass: "anim-hip-stretch"
-      }
+        animationClass: "anim-hip-stretch",
+        icon: "4️⃣",
+        tips: ["한 발을 반대쪽 무릎 위에 얹어 4자 만들기", "세워진 다리 허벅지 뒤를 손으로 잡기", "엉덩이 심층 근육이 당기는 느낌 유지"],
+        muscles: ["골반", "이상근", "둔근"]
     ]
   },
   {
@@ -162,36 +205,50 @@ const stretchingRoutines = [
         duration: 30,
         description: "편안하게 가부좌로 앉아 어깨 힘을 빼고 코로 깊게 들이마시고 입으로 천천히 내쉽니다.",
         tts: "첫 동작은 차분한 호흡입니다. 편안하게 앉거나 누워 몸의 힘을 뺍니다. 코로 숨을 깊게 들이쉬어 배를 부풀렸다가, 입으로 천천히 내쉬며 온몸의 긴장을 놓아줍니다.",
-        animationClass: "anim-deep-breathing"
+        animationClass: "anim-deep-breathing",
+        icon: "🌬️",
+        tips: ["코로 4초 들이마시기", "2초 멈추고 입으로 6초 내쉬기", "눈을 감고 어깨 힘을 완전히 빼기"],
+        muscles: ["횡격막", "전신"]
       },
       {
         name: "앉아서 척추 비틀기",
         duration: 30,
         description: "오른손으로 왼쪽 무릎을 잡고 상체를 왼쪽 뒤로 돌려 비틀어 줍니다. 반대쪽도 진행합니다.",
         tts: "앉아서 척추 비틀기입니다. 한 손으로 반대쪽 무릎을 잡고 척추를 위로 세운 상태에서 상체를 뒤쪽으로 지긋이 돌려 비틀어 줍니다. 척추에 쌓인 피로가 정화됩니다. 반대쪽도 동일하게 해주세요.",
-        animationClass: "anim-seated-twist"
+        animationClass: "anim-seated-twist",
+        icon: "🌀",
+        tips: ["척추를 위로 세우고 바르게 앉기", "한 손으로 반대쪽 무릎 짚고 천천히 비틀기", "좌우 각 15초씩 유지하기"],
+        muscles: ["척추", "옆구리", "등"]
       },
       {
         name: "나비 자세로 골반 이완하기",
         duration: 30,
         description: "양 발바닥을 서로 맞대고 발뒤꿈치를 몸쪽으로 당긴 뒤 상체를 앞으로 천천히 숙여줍니다.",
         tts: "나비 자세입니다. 양 발바닥을 붙이고 앉아 무릎을 바닥 쪽으로 내립니다. 숨을 내쉬며 상체를 앞으로 편안하게 숙여 골반 안쪽과 허벅지 안쪽 근육을 이완합니다.",
-        animationClass: "anim-butterfly"
+        animationClass: "anim-butterfly",
+        icon: "🦋",
+        tips: ["양 발바닥을 맞대어 붙이기", "무릎을 바닥 쪽으로 내리기", "내쉬는 숨에 상체를 앞으로 부드럽게 숙이기"],
+        muscles: ["골반", "내전근", "고관절"]
       },
       {
         name: "다리 벽에 기대어 올리기",
         duration: 30,
         description: "누운 상태에서 엉덩이를 벽에 대고 다리를 위로 곧게 뻗어 하체 부종을 풀어줍니다.",
         tts: "다리 올리기입니다. 누워서 다리를 위로 곧게 뻗어 줍니다. 벽에 기대어도 좋습니다. 다리에 머물던 피와 림프 순환을 도와 하체의 피로를 싹 없애줍니다.",
-        animationClass: "anim-legs-up"
+        animationClass: "anim-legs-up",
+        icon: "🦵",
+        tips: ["등과 엉덩이를 바닥에 완전히 붙이기", "다리를 위로 곧게 펴기 (벽에 기대도 OK)", "30초 동안 편안하게 유지하기"],
+        muscles: ["하체", "혈액순환", "종아리"]
       },
       {
         name: "온몸 릴랙스 사바사나",
         duration: 30,
         description: "두 다리를 넓게 벌려 바닥에 누워 양손은 하늘을 향하게 한 후 온몸의 힘을 완전히 뺍니다.",
         tts: "마지막 동작은 사바사나 휴식입니다. 온몸을 바닥에 넓게 눕히고 손바닥은 하늘을 봅니다. 눈을 감고 머리부터 발끝까지 모든 힘을 툭 내려놓으세요. 오늘 하루도 수고하셨습니다.",
-        animationClass: "anim-savasana"
-      }
+        animationClass: "anim-savasana",
+        icon: "💤",
+        tips: ["바닥에 크게 눕고 팔다리 편하게 벌리기", "손바닥을 하늘로 향하게 하기", "머리부터 발끝까지 순서대로 힘 빼기"],
+        muscles: ["전신", "정신"]
     ]
   },
 
@@ -211,35 +268,50 @@ const stretchingRoutines = [
         duration: 30,
         description: "가볍게 뛰면서 팔과 다리를 양옆으로 동시에 벌렸다 오므립니다. (팔벌려뛰기)",
         tts: "첫 번째 동작은 전신 칼로리 소모를 위한 점핑잭입니다. 가볍게 점프하며 발을 벌리고 양손은 머리 위로 올려 줍니다. 리듬감 있게 숨을 내쉬며 동작을 계속 진행하세요.",
-        animationClass: "anim-jumping-jacks"
+        animationClass: "anim-jumping-jacks",
+        icon: "⭐",
+        tips: ["가볍게 점프하며 팔을 크게 올려내리기", "리듬감 있게 지속하기", "숨을 내쉬면서 리듬을 유지하기"],
+        muscles: ["전신", "어깨", "종아리"]
       },
       {
         name: "기초 하체 스쿼트",
         duration: 30,
         description: "발을 어깨너비로 벌리고, 엉덩이를 무릎 높이까지 앉혔다가 밀어 올립니다.",
         tts: "기초 스쿼트입니다. 발바닥 전체로 지면을 꽉 누르고, 무릎이 흔들리지 않게 주의하며 앉았다가 일어납니다. 허벅지와 엉덩이 근육의 힘에 집중해 보세요.",
-        animationClass: "anim-squats"
+        animationClass: "anim-squats",
+        icon: "🦵",
+        tips: ["발을 어깨 너비로 벌리기", "무릎이 발끝을 넘지 않게 주의하기", "등을 곧게 펴고 시선은 정면 보기"],
+        muscles: ["허벅지", "엉덩이", "코어"]
       },
       {
         name: "상체 강화 팔굽혀펴기",
         duration: 30,
         description: "엎드려 몸을 일직선으로 단단히 잡고, 팔꿈치를 구부려 가슴을 바닥 가까이 내립니다.",
         tts: "팔굽혀펴기입니다. 힘이 많이 든다면 무릎을 바닥에 대고 하셔도 매우 좋습니다. 가슴과 팔 뒤쪽의 근육을 사용해 몸을 곧게 뻗으며 밀어 올리세요.",
-        animationClass: "anim-pushups"
+        animationClass: "anim-pushups",
+        icon: "💪",
+        tips: ["양손을 어깨 너비보다 조금 넓게 짚기", "머리부터 발끝까지 일직선 유지하기", "무릎 바닥에 대는 것도 OK"],
+        muscles: ["가슴", "삼두근", "코어"]
       },
       {
         name: "상복부 크런치",
         duration: 30,
         description: "누워서 다리를 굽히고, 명치를 쥐어짜듯 상체 윗부분을 둥글게 말아 올립니다.",
         tts: "상복부 크런치입니다. 뒤통수를 가볍게 받치고, 복부의 수축 힘만으로 상체를 살짝 들어 올려 골반 방향으로 당깁니다. 내려갈 때도 복부 긴장을 유지합니다.",
-        animationClass: "anim-crunches"
+        animationClass: "anim-crunches",
+        icon: "🔥",
+        tips: ["무릎을 굽히고 바닥에 눕기", "턱을 받치지 말고 뒷통수를 향해 시선 보유하기", "복부 힘만으로 상체를 살짝 들기"],
+        muscles: ["복직근", "코어"]
       },
       {
         name: "코어 강화 버티기 플랭크",
         duration: 30,
         description: "양 팔꿈치를 바닥에 대고 엎드려 머리부터 발뒤꿈치까지 일직선으로 수평을 유지합니다.",
         tts: "마지막 동작은 코어 플랭크입니다. 전신에 힘을 꽉 주세요. 특히 배꼽을 등 쪽으로 바짝 잡아당기고 엉덩이가 들리거나 쳐지지 않게 곧게 버텨줍니다.",
-        animationClass: "anim-plank"
+        animationClass: "anim-plank",
+        icon: "🛡️",
+        tips: ["팔꿈치를 어깨 아래에 두고 엎드리기", "배꼽을 등 쪽으로 바짝 일직선 유지하기", "엉덩이가 들리거나 쳐지지 않게 주의하기"],
+        muscles: ["코어", "복부", "전신"]
       }
     ]
   },
@@ -258,35 +330,50 @@ const stretchingRoutines = [
         duration: 30,
         description: "누워서 머리와 어깨를 바닥에서 떼어 복부 윗부분을 지긋이 조여줍니다.",
         tts: "첫 동작은 상복부 크런치입니다. 시선은 무릎 위를 보며, 갈비뼈를 아래로 눌러주는 느낌으로 복부를 둥글게 말아 줍니다. 숨을 뱉을 때 머리를 들어 올리세요.",
-        animationClass: "anim-crunches"
+        animationClass: "anim-crunches",
+        icon: "🔥",
+        tips: ["무릎을 세우고 등을 바닥에 평평하게 대기", "갈비뼈를 아래로 눌러 복부 둥글게 말기", "목에 힘 빼고 복부 힘만으로 들어 올리기"],
+        muscles: ["복직근", "상복부"]
       },
       {
         name: "하복부 레그레이즈",
         duration: 30,
         description: "누워 다리를 곧게 펴고 아래 허리가 바닥에서 뜨지 않게 유지하며 다리를 올리고 내립니다.",
         tts: "하복부 레그레이즈입니다. 양손을 골반 옆에 대거나 엉덩이 아래에 받칩니다. 허리가 뜨지 않는 깊이까지만 다리를 내렸다가 아랫배 힘으로 끌어 올립니다.",
-        animationClass: "anim-legs-up" // 누워 다리 뻗기
+        animationClass: "anim-legs-up",
+        icon: "⬆️",
+        tips: ["허리를 바닥에 꽉 눌러 붙이기", "다리를 천천히 90도까지 올리기", "내릴 때 허리가 뜨지 않는 지점에서 멈추기"],
+        muscles: ["하복부", "코어", "장요근"]
       },
       {
         name: "복부 크런치 홀드",
         duration: 30,
         description: "크런치 기본 올라온 자세에서 30초 동안 복부의 긴장감을 유지한 채 멈춰 서 버팁니다.",
         tts: "복부 크런치 홀드입니다. 상체를 둥글게 말아 띄운 후, 그 상태로 호흡을 얕게 쉬며 지긋이 30초 동안 버텨냅니다. 복부가 단단해지는 것을 강하게 느껴보세요.",
-        animationClass: "anim-crunches"
+        animationClass: "anim-crunches",
+        icon: "⏸️",
+        tips: ["크런치 자세로 올라온 상태 유지하기", "얕은 호흡을 유지하며 버티기", "복부가 단단히 조여지는 느낌에 집중하기"],
+        muscles: ["복직근", "코어"]
       },
       {
         name: "복부 코어 완성 플랭크",
         duration: 30,
         description: "팔꿈치 플랭크 자세에서 흔들림 없이 고정하고 복강 안의 압력을 유지하며 버팁니다.",
         tts: "코어 플랭크입니다. 전신의 잔근육까지 꽉 쥐어 짜낸다는 느낌으로 곧게 기둥을 만듭니다. 복부 전체에 단단한 힘을 유지하고 편안히 호흡을 반복합니다.",
-        animationClass: "anim-plank"
+        animationClass: "anim-plank",
+        icon: "🛡️",
+        tips: ["팔꿈치를 어깨 아래 정확히 두기", "전신을 일직선으로 고정하기", "배꼽을 등 쪽으로 당기며 코어 조이기"],
+        muscles: ["코어", "복부 전체", "전신"]
       },
       {
         name: "지친 복부 이완 코브라 스트레칭",
         duration: 30,
         description: "엎드려 손바닥으로 바닥을 밀며 상체를 세우고, 복부 앞면을 길게 늘려 이완해 줍니다.",
         tts: "마지막은 복부 스트레칭입니다. 엎드려 상체를 세우며 당겼던 복부 근육을 앞쪽으로 길게 이완시킵니다. 굳었던 허리와 복부가 기분 좋게 펴집니다.",
-        animationClass: "anim-cobra"
+        animationClass: "anim-cobra",
+        icon: "🐍",
+        tips: ["배를 바닥에 대고 엎드리기", "손으로 바닥을 밀며 천천히 상체 들기", "복부 앞면이 늘어나는 느낌 유지하기"],
+        muscles: ["복부", "척추", "허리"]
       }
     ]
   },
@@ -305,35 +392,50 @@ const stretchingRoutines = [
         duration: 30,
         description: "가볍게 뛰며 팔을 크고 넓게 움직여 어깨와 상체 주변 관절의 체온을 올립니다.",
         tts: "상체 운동에 앞서 웜업을 위한 점핑잭입니다. 팔을 머리 위까지 크고 시원하게 휘두르며 상체와 어깨 관절의 긴장을 부드럽게 활성화하세요.",
-        animationClass: "anim-jumping-jacks"
+        animationClass: "anim-jumping-jacks",
+        icon: "⭐",
+        tips: ["팔을 머리 위까지 크게 올려내리기", "점프는 가볍게 유지하기", "어깨 관절이 풀리는 느낌에 집중하기"],
+        muscles: ["어깨", "전신", "심폐"]
       },
       {
         name: "말린 어깨 가슴 활짝 열기",
         duration: 30,
         description: "양팔을 옆으로 열며 어깨 뒤쪽 견갑골을 꽉 조이고 가슴 대흉근을 늘려 준비합니다.",
         tts: "가슴 활짝 열기입니다. 양팔을 크게 벌려 등 뒤 날개뼈를 조이고 굽어 있는 가슴 앞부분의 이완을 유도합니다. 호흡을 길게 들이마셔 가슴을 부풀립니다.",
-        animationClass: "anim-chest-opener"
+        animationClass: "anim-chest-opener",
+        icon: "🙌",
+        tips: ["양팔을 옆으로 넓게 펼치기", "가슴을 앞으로 내밀며 날개뼈 뒤로 조이기", "숨을 들이마시며 가슴을 최대한 부풀리기"],
+        muscles: ["가슴", "어깨", "등"]
       },
       {
         name: "표준 팔굽혀펴기",
         duration: 30,
         description: "어깨너비보다 넓게 손을 짚고 엎드려 몸을 수평으로 맞춘 뒤 가슴으로 바닥을 밀어냅니다.",
         tts: "표준 팔굽혀펴기입니다. 팔을 구부릴 때 팔꿈치가 옆으로 너무 벌어지지 않게 주의하고, 바닥을 손바닥 전체로 밀치며 올라옵니다. 가슴 근육의 뻐근함을 느끼세요.",
-        animationClass: "anim-pushups"
+        animationClass: "anim-pushups",
+        icon: "💪",
+        tips: ["손을 어깨보다 조금 넓게 짚기", "팔꿈치가 90도가 될 때까지 내리기", "가슴 근육으로 밀어 올리는 느낌으로 하기"],
+        muscles: ["가슴", "삼두근", "어깨"]
       },
       {
         name: "무릎 대고 팔굽혀펴기",
         duration: 30,
         description: "무릎을 대고 강도를 낮춘 상태에서 올바른 자세에 집중하여 푸쉬업을 반복합니다.",
         tts: "무릎 대고 팔굽혀펴기입니다. 무릎을 매트에 대어 무게를 덜고, 가슴을 양손 사이 중앙으로 정확히 내렸다가 가슴 근육의 수축력을 느끼며 밀고 밀어냅니다.",
-        animationClass: "anim-pushups"
+        animationClass: "anim-pushups",
+        icon: "💪",
+        tips: ["무릎을 바닥에 대고 시작하기", "엉덩이를 내리고 상체를 곧게 유지하기", "가슴이 양손 중앙으로 내려가도록 하기"],
+        muscles: ["가슴", "삼두근", "코어"]
       },
       {
         name: "상체 조율 W 스트레칭",
         duration: 30,
         description: "양팔을 들어 올렸다가 날개뼈 주변 등 근육을 강하게 쥐어짜며 W자를 만듭니다.",
         tts: "마지막 조율 동작 W 스트레칭입니다. 가슴 운동 후 뭉친 가슴을 펴고 어깨 뒷면과 등의 자극을 정돈하여 올바른 상체 라인을 완성합니다.",
-        animationClass: "anim-w-stretch"
+        animationClass: "anim-w-stretch",
+        icon: "✌️",
+        tips: ["양손을 하늘로 올렸다가 팔꿈치 내리기", "W 모양 만들 때 날개뼈 꽉 조이기", "천천히 10회 반복하기"],
+        muscles: ["어깨", "등", "승모근"]
       }
     ]
   },
@@ -352,35 +454,50 @@ const stretchingRoutines = [
         duration: 30,
         description: "발을 어깨너비로 벌리고 엉덩이를 의자에 앉듯 낮췄다가 뒤꿈치로 바닥을 짚고 일어섭니다.",
         tts: "첫 동작은 기초 스쿼트입니다. 가슴을 펴고 시선은 정면을 봅니다. 뒤꿈치에 실리는 몸무게를 지탱하며 천천히 깊게 앉았다가, 허벅지 힘으로 지면을 차며 일어섭니다.",
-        animationClass: "anim-squats"
+        animationClass: "anim-squats",
+        icon: "🦵",
+        tips: ["발을 어깨 너비로 벌리고 발끝 살짝 밖으로 향하기", "뒤꿈치에 무게를 싣고 앉기", "무릎이 발끝을 넘지 않도록 주의하기"],
+        muscles: ["허벅지", "엉덩이", "코어"]
       },
       {
         name: "스쿼트 홀드 (버티기)",
         duration: 30,
         description: "스쿼트 자세로 앉은 상태에서 골반과 엉덩이를 무릎 높이에 고정하고 버팁니다.",
         tts: "스쿼트 홀드입니다. 스쿼트 아래 구간에서 정지하세요. 허벅지가 팽팽하게 터지는 자극이 느껴집니다. 호흡을 참지 말고 일정하게 쉬면서 단단히 고정해 줍니다.",
-        animationClass: "anim-squats"
+        animationClass: "anim-squats",
+        icon: "⏸️",
+        tips: ["허벅지가 바닥과 평행이 될 때까지 앉기", "그 자세에서 멈추고 호흡 유지하기", "허벅지 근육이 불타는 느낌을 버티기"],
+        muscles: ["허벅지", "엉덩이", "종아리"]
       },
       {
         name: "골반 주변 이완 이상근 스트레칭",
         duration: 30,
         description: "누워서 다리 하나를 접어 올리고 가슴 쪽으로 당겨 굳어 있는 하체와 둔근을 이완합니다.",
         tts: "이상근 스트레칭입니다. 누워서 한쪽 다리를 접어 반대쪽 무릎 위에 가로로 얹어 당깁니다. 뻐근했던 엉덩이 심층 근육과 골반 주위가 기분 좋게 풀어집니다.",
-        animationClass: "anim-hip-stretch"
+        animationClass: "anim-hip-stretch",
+        icon: "4️⃣",
+        tips: ["한 발을 반대쪽 무릎 위에 얹어 4자 만들기", "세워진 다리 허벅지 뒤를 손으로 잡기", "엉덩이 심층 근육이 당기는 느낌 유지하기"],
+        muscles: ["골반", "이상근", "둔근"]
       },
       {
         name: "하체 피로 완화 다리 올리기",
         duration: 30,
         description: "등을 대고 편하게 누워 하체 혈액 순환을 위해 양다리를 하늘 위로 수직으로 뻗어줍니다.",
         tts: "다리 올리기입니다. 누운 자세에서 양다리를 모아 하늘 높이 들어 올립니다. 하체에 차올랐던 피로 물질과 젖산이 순환되어 풀리게 됩니다.",
-        animationClass: "anim-legs-up"
+        animationClass: "anim-legs-up",
+        icon: "🦵",
+        tips: ["등과 엉덩이를 바닥에 완전히 붙이기", "다리를 위로 곧게 펴기 (벽에 기대도 OK)", "30초 동안 편안하게 유지하기"],
+        muscles: ["하체", "혈액순환", "종아리"]
       },
       {
         name: "마무리 전신 이완 서서 숙이기",
         duration: 30,
         description: "서서 양다리를 모으고 천천히 상체를 늘어뜨려 허벅지 뒤쪽 햄스트링을 이완하며 마칩니다.",
         tts: "마지막 동작은 서서 상체 숙이기입니다. 다리 뒤쪽과 등 전체를 축 늘어뜨려 다리 뒷면 햄스트링을 시원하게 스트레칭하며 30초 동안 마지막 숨을 고릅니다.",
-        animationClass: "anim-forward-fold"
+        animationClass: "anim-forward-fold",
+        icon: "🙇",
+        tips: ["무릎 살짝 구부리고 상체 힘 완전히 빼기", "목과 머리도 완전히 아래로 늘어뜨리기", "햄스트링이 당기는 느낌 30초 유지하기"],
+        muscles: ["허리", "햄스트링", "척추"]
       }
     ]
   }
