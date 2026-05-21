@@ -3,38 +3,7 @@
  * 스트레칭 & 홈트레이닝 통합 웹 앱
  */
 
-// --- Lottie 애니메이션 URL 맵 (animationClass → dotLottie CDN URL) ---
-const lottieMap = {
-  // === 홈트레이닝 ===
-  "anim-jumping-jacks": "https://assets-v2.lottiefiles.com/a/8c2969a2-116a-11ee-ae24-8ba0ad01121d/PL84M8aMWv.lottie",
-  "anim-squats":        "https://assets-v2.lottiefiles.com/a/bf1f7a6c-1175-11ee-ae9f-2359fb1b49ba/NZQJOYnhVs.lottie",
-  "anim-pushups":       "https://assets-v2.lottiefiles.com/a/6c1a4598-1177-11ee-9e88-bf9e8c56d70c/YDxF9XmjyX.lottie",
-  "anim-plank":         "https://assets-v2.lottiefiles.com/a/ca9abb22-116b-11ee-9865-affd2e75f3cc/CD1ikDmxaL.lottie",
-  "anim-crunches":      "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  // === 스트레칭 ===
-  "anim-full-stretch":  "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-neck-stretch":  "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-side-stretch":  "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-shoulder-roll": "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-forward-fold":  "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-chin-tuck":     "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-chest-opener":  "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-w-stretch":     "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-neck-down":     "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-shoulder-back": "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-cat-cow":       "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-child-pose":    "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-knee-to-chest": "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-cobra":         "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-hip-stretch":   "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-deep-breathing":"https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-seated-twist":  "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-butterfly":     "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-legs-up":       "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  "anim-savasana":      "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie",
-  // 기본값
-  "default":            "https://assets-v2.lottiefiles.com/a/21be1e42-1173-11ee-83c0-4322d3669e57/hSoYnF3LmV.lottie"
-};
+
 
 
 // --- 글로벌 상태 관리 객체 ---
@@ -362,12 +331,6 @@ function loadExercise(index) {
   elements.activeExName.innerText = ex.name;
   elements.activeExDesc.innerText = ex.description;
   
-  // Lottie 애니메이션 전환
-  const lottiePlayer = document.getElementById("lottie-player");
-  const lottieUrl = lottieMap[ex.animationClass] || lottieMap["default"];
-  if (lottiePlayer) {
-    lottiePlayer.load(lottieUrl);
-  }
   const prepTime = parseInt(appState.settings.prepTime, 10);
   if (prepTime > 0) runPrepPhase(prepTime, ex);
   else runExercisePhase(ex);
